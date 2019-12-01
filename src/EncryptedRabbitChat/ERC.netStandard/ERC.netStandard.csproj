@@ -5,6 +5,12 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>ERC.netStandard.snk</AssemblyOriginatorKeyFile>
     <RootNamespace>ERC</RootNamespace>
+    <Version>0.1.0</Version>
+    <Authors>Gerhard Stephan</Authors>
+    <Company>TimePunch KG</Company>
+    <Product>Encrypted Rabbit MQ Chat</Product>
+    <Copyright>Copyright © TimePunch KG 2019</Copyright>
+    <PackageProjectUrl>https://github.com/BitKFu/encryptedRabbitChat</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
