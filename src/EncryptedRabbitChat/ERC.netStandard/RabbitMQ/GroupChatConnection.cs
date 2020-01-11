@@ -95,19 +95,23 @@ namespace ERC.RabbitMQ
             base.Dispose();
         }
 
-        protected void SendMetaMessage(MetaState state)
+        protected void SendMetaMessage(MetaState state, string chatMember = null)
         {
             var metaMessage = new MetaMessage(state, GroupChat.ChatMember);
             var json = JsonConvert.SerializeObject(metaMessage);
             var chatMessage = GroupChat.Encrypt(json);
-            Model.BasicPublish("amq.fanout", GroupChat.SharedSecret.GroupChatName, true, new BasicProperties(), BinaryFormatter<ChatMessage>.ToBinary(chatMessage));
+
+            var queue = GroupChat.SharedSecret.GroupChatName + (chatMember != null ? $".{chatMember}" : "");
+            Model.BasicPublish("amq.fanout", queue, true, new BasicProperties(), BinaryFormatter<ChatMessage>.ToBinary(chatMessage));
         }
 
-        public void SendMessage(TMessageObject message)
+        public void SendMessage(TMessageObject message, string chatMember = null)
         {
             var json = JsonConvert.SerializeObject(message);
             var chatMessage = GroupChat.Encrypt(json);
-            Model.BasicPublish("amq.fanout", GroupChat.SharedSecret.GroupChatName, true, new BasicProperties(), BinaryFormatter<ChatMessage>.ToBinary(chatMessage));
+
+            var queue = GroupChat.SharedSecret.GroupChatName + (chatMember != null ? $".{chatMember}" : "");
+            Model.BasicPublish("amq.fanout", queue, true, new BasicProperties(), BinaryFormatter<ChatMessage>.ToBinary(chatMessage));
         }
     }
 }

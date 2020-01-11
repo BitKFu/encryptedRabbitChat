@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ERC</id>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <title>Encrypted Rabbit MQ Group Chat</title>
     <authors>Gerhard Stephan</authors>
     <owners>TimePunch KG</owners>
@@ -16,13 +16,14 @@
       <group targetFramework=".NETFramework4.7.2">
         <dependency id="Newtonsoft.Json" version="12.0.3" />
         <dependency id="Newtonsoft.Json.Schema" version="3.0.11" />
-        <dependency id="MassTransit.RabbitMQ" version="5.5.6" />
+        <dependency id="RabbitMQ.Client" version="5.1.2" />
+        <dependency id="Microsoft.Diagnostics.Tracing.EventSource.Redist" version="1.1.28" />
       </group>
       <group targetFramework=".NETStandard2.1">
         <dependency id="Newtonsoft.Json" version="12.0.3" />
         <dependency id="Newtonsoft.Json.Schema" version="3.0.11" />
         <dependency id="RabbitMQ.Client" version="5.1.2" />
-        <dependency id="System.Security.Cryptography.Cng" version="4.6.1" />
+        <dependency id="System.Security.Cryptography.Cng" version="4.7.0" />
       </group>
     </dependencies>
   </metadata>

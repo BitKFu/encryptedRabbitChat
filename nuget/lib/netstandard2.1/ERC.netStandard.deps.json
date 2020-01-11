@@ -7,12 +7,12 @@
   "targets": {
     ".NETStandard,Version=v2.1": {},
     ".NETStandard,Version=v2.1/": {
-      "ERC.netStandard/0.1.0": {
+      "ERC.netStandard/0.2.0": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.3",
           "Newtonsoft.Json.Schema": "3.0.11",
           "RabbitMQ.Client": "5.1.2",
-          "System.Security.Cryptography.Cng": "4.6.1"
+          "System.Security.Cryptography.Cng": "4.7.0"
         },
         "runtime": {
           "ERC.netStandard.dll": {}
@@ -45,18 +45,18 @@
           }
         }
       },
-      "System.Security.Cryptography.Cng/4.6.1": {
+      "System.Security.Cryptography.Cng/4.7.0": {
         "runtime": {
           "lib/netstandard2.1/System.Security.Cryptography.Cng.dll": {
-            "assemblyVersion": "4.3.2.1",
-            "fileVersion": "4.700.19.51609"
+            "assemblyVersion": "4.3.3.0",
+            "fileVersion": "4.700.19.56404"
           }
         }
       }
     }
   },
   "libraries": {
-    "ERC.netStandard/0.1.0": {
+    "ERC.netStandard/0.2.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -82,12 +82,12 @@
       "path": "rabbitmq.client/5.1.2",
       "hashPath": "rabbitmq.client.5.1.2.nupkg.sha512"
     },
-    "System.Security.Cryptography.Cng/4.6.1": {
+    "System.Security.Cryptography.Cng/4.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DhM1oY01+17wLWSjLsuyLMxBfG6kshnTBeBsi+1YYkLuxyhC+nV+ENJBhtlKOwCJOoKk3m2kO+gtVMpluDO3/A==",
-      "path": "system.security.cryptography.cng/4.6.1",
-      "hashPath": "system.security.cryptography.cng.4.6.1.nupkg.sha512"
+      "sha512": "sha512-4WQjFuypWtxb/bl/YwEE7LYGn4fgpsikFfBU6xwEm4YBYiRAhXAEJ62lILBu2JJSFbClIAntFTGfDZafn8yZTg==",
+      "path": "system.security.cryptography.cng/4.7.0",
+      "hashPath": "system.security.cryptography.cng.4.7.0.nupkg.sha512"
     }
   }
 }

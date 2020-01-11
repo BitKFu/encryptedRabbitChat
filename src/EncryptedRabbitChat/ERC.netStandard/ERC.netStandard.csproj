@@ -5,7 +5,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>ERC.netStandard.snk</AssemblyOriginatorKeyFile>
     <RootNamespace>ERC</RootNamespace>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <Authors>Gerhard Stephan</Authors>
     <Company>TimePunch KG</Company>
     <Product>Encrypted Rabbit MQ Chat</Product>
@@ -17,7 +17,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.11" />
     <PackageReference Include="RabbitMQ.Client" Version="5.1.2" />
-    <PackageReference Include="System.Security.Cryptography.Cng" Version="4.6.1" />
+    <PackageReference Include="System.Security.Cryptography.Cng" Version="4.7.0" />
   </ItemGroup>
 
 </Project>
