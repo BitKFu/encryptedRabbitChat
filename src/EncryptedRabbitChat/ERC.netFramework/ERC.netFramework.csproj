@@ -89,6 +89,9 @@
     <Compile Include="..\ERC.netStandard\RabbitMQ\RabbitConnection.cs">
       <Link>RabbitMQ\RabbitConnection.cs</Link>
     </Compile>
+    <Compile Include="..\ERC.netStandard\RabbitMQ\RabbitMQException.cs">
+      <Link>RabbitMQ\RabbitMQException.cs</Link>
+    </Compile>
     <Compile Include="..\ERC.netStandard\RabbitMQ\RabbitSharedSecret.cs">
       <Link>RabbitMQ\RabbitSharedSecret.cs</Link>
     </Compile>

@@ -113,7 +113,12 @@ namespace ERC.RabbitMQ
             var message = Chat.EncryptData(BinaryFormatter<TSharedSecret>.ToBinary(sharedSecret));
             var toSend = BinaryFormatter<ChatMessage>.ToBinary(message);
 
-            Model.QueueDeclarePassive(ClientQueue);
+            try
+            {
+                Model.QueueDeclarePassive(ClientQueue);
+            }
+            catch { throw new RabbitMQException(RabbitMQException.ExceptionType.NoClientQueue); }
+
             Model.BasicPublish(string.Empty, ClientQueue, true, null, toSend);
 
             OnSharedKeyExchanged?.Invoke(this, Chat.ChatMember, sharedSecret);
@@ -131,6 +136,7 @@ namespace ERC.RabbitMQ
                 return;
 
             Model.QueueDelete(ServerQueue, false, false);
+            Model.QueueDelete(ClientQueue, false, false);
             base.Dispose();
         }
 

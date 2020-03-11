@@ -1,4 +1,5 @@
-﻿using ERC.Chat.Engine;
+﻿using System;
+using ERC.Chat.Engine;
 using RabbitMQ.Client.Events;
 
 namespace ERC.RabbitMQ
@@ -64,8 +65,16 @@ namespace ERC.RabbitMQ
         /// <param name="name">name of the client</param>
         private void GetServerPublicKeyAndInitiateHandshake(string name)
         {
-            Model.QueueDeclarePassive(ClientQueue);
+            try
+            {
+                Model.QueueDeclarePassive(ClientQueue);
+            }
+            catch { throw new RabbitMQException(RabbitMQException.ExceptionType.NoClientQueue); }
+
             var data = Model.BasicGet(ClientQueue, true);
+            if (data == null)
+                throw new RabbitMQException(RabbitMQException.ExceptionType.NoServerHandshakeData);
+
             var handshake = BinaryFormatter<TServerHandshake>.FromBinary(data.Body);
 
             Chat = new EncryptedChat(name);
@@ -89,9 +98,14 @@ namespace ERC.RabbitMQ
         /// </summary>
         private void SendClientPublicKeyToServer(TServerHandshake serverHandshake)
         {
-            FaultedState = !ValidateServerHandshake(Chat.ChatMember, Chat.PublicKey, serverHandshake, out var handshake); 
+            FaultedState = !ValidateServerHandshake(Chat.ChatMember, Chat.PublicKey, serverHandshake, out var handshake);
 
-            Model.QueueDeclarePassive(ServerQueue);
+            try
+            {
+                Model.QueueDeclarePassive(ServerQueue);
+            }
+            catch { throw new RabbitMQException(RabbitMQException.ExceptionType.NoServerQueue);}
+
             Model.BasicPublish(string.Empty, ServerQueue, true, null, BinaryFormatter<TClientHandshake>.ToBinary(handshake));
         }
 
@@ -100,7 +114,11 @@ namespace ERC.RabbitMQ
         /// </summary>
         private void WaitForSharedSecret()
         {
-            Model.QueueDeclarePassive(ClientQueue);
+            try
+            {
+                Model.QueueDeclarePassive(ClientQueue);
+            }
+            catch { throw new RabbitMQException(RabbitMQException.ExceptionType.NoClientQueue); }
 
             var consumer = new EventingBasicConsumer(Model);
             consumer.Received += (obj, ea) =>
@@ -128,7 +146,6 @@ namespace ERC.RabbitMQ
             if (IsDisposed)
                 return;
 
-            Model.QueueDelete(ClientQueue, false, false);
             base.Dispose();
         }
 
