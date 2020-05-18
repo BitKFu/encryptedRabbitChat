@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{61B6316D-D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{622CA0A6-777F-4A9A-998C-6205CF7165CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERC.netStandard", "ERC.netStandard\ERC.netStandard.csproj", "{73C62C5E-F61C-422A-9B7C-1095454C6314}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERC.netStandard", "ERC.netStandard\ERC.netStandard.csproj", "{73C62C5E-F61C-422A-9B7C-1095454C6314}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
